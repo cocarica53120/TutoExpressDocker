@@ -1,0 +1,16 @@
+---
+
+- hosts: localhost
+  gather_facts: false
+
+
+  tasks:
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      uri:
+        url: http://localhost:3000/about
+        return_content: yes
+      register: reg_uri
+
+    - name: debug uri result
+      debug:
+        var: reg_uri
